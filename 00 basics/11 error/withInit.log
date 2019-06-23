@@ -1,0 +1,4 @@
+TRACE: 2019/06/21 13:05:03 logInit.go:28: I have something standard to say
+INFO: 2019/06/21 13:05:03 logInit.go:29: Special Information
+WARNING: 2019/06/21 13:05:03 logInit.go:30: There is something you need to know about
+ERROR: 2019/06/21 13:05:03 logInit.go:31: Something has failed

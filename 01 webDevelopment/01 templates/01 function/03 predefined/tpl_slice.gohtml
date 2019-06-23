@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predefined Global Functions</title>
+</head>
+<body>
+
+Example #1 (Range over Slice)
+{{range .}}
+    {{.}}
+{{end}}
+
+Example #2 (If data is not null)
+{{if .}}
+    Example #2 - {{.}}
+{{end}}
+
+Example #3 (If name of element is not null)
+{{range .}}
+    {{if .Name}}
+        Example #3 - {{.}}
+    {{end}}
+{{end}}
+
+Example #4 (If name of element is not null and admin is true)
+{{range .}}
+    {{if and .Name .Admin}}
+        Example #4 - Name: {{.Name}}
+        Example #4 - Motto: {{.Motto}}
+        Example #4 - Admin: {{.Admin}}
+    {{end}}
+{{end}}
+
+</body>
+</html>
