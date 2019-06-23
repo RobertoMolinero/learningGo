@@ -28,12 +28,11 @@ var fm = template.FuncMap{
 var tpl *template.Template
 
 func init() {
-	tpl = template.Must(template.New("").Funcs(fm).ParseFiles("tpl_index.gohtml"))
+	tpl = template.Must(template.New("").Funcs(fm).ParseFiles("../templates/pipeline.gohtml"))
 }
 
 func main() {
-
-	e := tpl.ExecuteTemplate(os.Stdout, "tpl_index.gohtml", 3)
+	e := tpl.ExecuteTemplate(os.Stdout, "pipeline.gohtml", 3)
 
 	if e != nil {
 		log.Fatalln(e)

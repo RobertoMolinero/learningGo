@@ -13,7 +13,6 @@ func init() {
 }
 
 func main() {
-
 	e := tpl.ExecuteTemplate(os.Stdout, "index.gohtml", 42)
 
 	if e != nil {

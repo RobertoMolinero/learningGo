@@ -9,7 +9,7 @@ import (
 var tplIndex *template.Template
 
 func init() {
-	tplIndex = template.Must(template.ParseFiles("tpl_index.gohtml"))
+	tplIndex = template.Must(template.ParseFiles("../templates/tpl_index.gohtml"))
 }
 
 func main() {

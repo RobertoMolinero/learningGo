@@ -26,7 +26,7 @@ type sage struct {
 var tpl *template.Template
 
 func init() {
-	tpl = template.Must(template.New("").Funcs(fm).ParseFiles("tpl.gohtml"))
+	tpl = template.Must(template.New("").Funcs(fm).ParseFiles("../templates/string.gohtml"))
 }
 
 func main() {
@@ -53,7 +53,7 @@ func main() {
 		Wisdom: sages,
 	}
 
-	e := tpl.ExecuteTemplate(os.Stdout, "tpl.gohtml", data)
+	e := tpl.ExecuteTemplate(os.Stdout, "string.gohtml", data)
 
 	if e != nil {
 		log.Fatalln(e)

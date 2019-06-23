@@ -9,7 +9,7 @@ import (
 var tplSlice *template.Template
 
 func init() {
-	tplSlice = template.Must(template.ParseFiles("tpl.gohtml"))
+	tplSlice = template.Must(template.ParseFiles("../templates/tpl_slice.gohtml"))
 }
 
 type user struct {

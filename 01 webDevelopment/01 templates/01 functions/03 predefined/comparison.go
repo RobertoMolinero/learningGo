@@ -9,11 +9,11 @@ import (
 var tplComparison *template.Template
 
 func init() {
-	tplComparison = template.Must(template.ParseFiles("tpl_comparison.gohtml"))
+	tplComparison = template.Must(template.ParseFiles("../templates/tpl_comparison.gohtml"))
 }
 
 func main() {
-	g1 := struct {
+	score := struct {
 		Score1 int
 		Score2 int
 	}{
@@ -21,7 +21,7 @@ func main() {
 		9,
 	}
 
-	e := tplComparison.Execute(os.Stdout, g1)
+	e := tplComparison.Execute(os.Stdout, score)
 
 	if e != nil {
 		log.Fatalln(e)

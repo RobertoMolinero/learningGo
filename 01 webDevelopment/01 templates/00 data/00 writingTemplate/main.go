@@ -34,5 +34,9 @@ func main() {
 
 	defer file.Close()
 
-	io.Copy(file, strings.NewReader(tpl))
+	_, e = io.Copy(file, strings.NewReader(tpl))
+
+	if e != nil {
+		log.Fatalln("Error writing File",e)
+	}
 }

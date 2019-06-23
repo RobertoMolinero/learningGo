@@ -14,7 +14,6 @@ func init() {
 
 func main() {
 	e := tpl.ExecuteTemplate(os.Stdout, "variable.gohtml", `Release self-focus; embrace other-focus.`)
-
 	if e != nil {
 		log.Fatalln(e)
 	}
