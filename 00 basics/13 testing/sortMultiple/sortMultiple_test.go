@@ -74,7 +74,7 @@ func executeTests(t *testing.T, tests []test, f BookSort) {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			sort.Sort(BookSort{tt.input, f.less})
 			if !reflect.DeepEqual(tt.input, tt.output) {
-				t.Errorf("%d = %v, want %v", i, tt.input, tt.output)
+				t.Errorf("%d: expected %v, got %v", i, tt.output, tt.input)
 			}
 		})
 	}

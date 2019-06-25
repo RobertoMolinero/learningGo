@@ -13,7 +13,7 @@ func init() {
 }
 
 func main() {
-	e := t.ExecuteTemplate(os.Stdout, "template.gohtml", 42)
+	e := t.ExecuteTemplate(os.Stdout, "variableInt.gohtml", 42)
 	if e != nil {
 		log.Fatalln(e)
 	}

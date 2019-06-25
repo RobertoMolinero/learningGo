@@ -10,20 +10,16 @@ import (
 
 func main() {
 	listener, e := net.Listen("tcp", ":8080")
-
 	if e != nil {
 		log.Fatalln(e)
 	}
-
 	defer listener.Close()
 
 	for {
 		conn, e := listener.Accept()
-
 		if e != nil {
 			log.Fatalln(e)
 		}
-
 		go handle(conn)
 	}
 }
