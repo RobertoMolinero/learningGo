@@ -42,11 +42,9 @@ func request(conn net.Conn) {
 		if i == 0 {
 			mux(conn, ln)
 		}
-
 		if ln == "" {
 			break
 		}
-
 		i++
 	}
 }
@@ -82,6 +80,7 @@ func index(conn net.Conn) {
 	<a href="/contact">contact</a><br>
 	<a href="/apply">apply</a><br>
 	</body></html>`
+
 	fmt.Fprint(conn, "HTTP/1.1 200 OK\r\n")
 	fmt.Fprintf(conn, "Content-Length: %d\r\n", len(body))
 	fmt.Fprint(conn, "Content-Type: text/html\r\n")

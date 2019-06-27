@@ -6,31 +6,25 @@ import (
 	"io"
 	"log"
 	"net"
-	"os"
 	"strings"
 )
 
 func main() {
-
 	listener, e := net.Listen("tcp", ":8080")
-
 	if e != nil {
 		log.Fatalln(e)
 	}
 
 	for {
 		conn, e := listener.Accept()
-
 		if e != nil {
 			log.Fatalln(e)
 		}
-
 		go handle(conn)
 	}
 }
 
 func handle(conn net.Conn) {
-
 	defer conn.Close()
 
 	io.WriteString(conn,

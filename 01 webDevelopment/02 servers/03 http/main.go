@@ -19,18 +19,15 @@ func main() {
 
 	for {
 		conn, e := listener.Accept()
-
 		if e != nil {
 			log.Fatalln(e)
 		}
-
 		go handle(conn)
 	}
 }
 
 func handle(conn net.Conn) {
 	defer conn.Close()
-
 	request(conn)
 	respond(conn)
 }
@@ -53,7 +50,6 @@ func request(conn net.Conn) {
 		if ln == "" {
 			break
 		}
-
 		i++
 	}
 }

@@ -9,9 +9,7 @@ import (
 type hotdog int
 
 func (h hotdog) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-
 	e := r.ParseForm()
-
 	if e != nil {
 		log.Fatalln(e)
 	}
