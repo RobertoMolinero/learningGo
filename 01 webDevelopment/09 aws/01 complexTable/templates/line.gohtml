@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/css/bootstrap.css"/>
+    <title>Sample Data</title>
+</head>
+
+<body>
+
+<div class="modal fade" id="createLineDialog" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <form method="post" action="createLine">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add a Line</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <td>Text:</td>
+                            <td><input type="text" class="form-control" name="dialogText"></td>
+                        </tr>
+                        <tr>
+                            <td>Number:</td>
+                            <td><input type="number" class="form-control" name="dialogNumber"></td>
+                        </tr>
+                        <tr>
+                            <td>Date:</td>
+                            <td><input type="date" class="form-control" name="dialogDate"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">
+                        <img src="static/img/icons8-dialog-cancel-32.png">
+                    </button>
+                    <button type="submit" class="btn btn-outline-primary">
+                        <img src="static/img/icons8-dialog-ok-32.png">
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-1">
+        </div>
+        <div class="col-12 col-sm-10">
+            <h1>Lines</h1>
+            <br/>
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>Text</th>
+                    <th>Number</th>
+                    <th>Date</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+                {{range .}}
+                    <tr>
+                        <form method="post" action="updateLine">
+                            <input type="hidden" name="id" value={{.Id}}>
+                            <td><input type="text" class="form-control" name="text" value={{.Text}}></td>
+                            <td><input type="number" class="form-control" name="number" value={{.Number}}></td>
+                            <td><input type="date" class="form-control" name="date" value={{.Date | formatAsDate}}></td>
+                            <td>
+                                <button type="submit" class="btn">
+                                    <img src="static/img/icons8-table-editRow-32.png">
+                                </button>
+                            </td>
+                        </form>
+                        <td>
+                            <form method="post" action="deleteLine">
+                                <input type="hidden" name="id" value={{.Id}}>
+                                <button type="submit" class="btn">
+                                    <img src="static/img/icons8-table-deleteRow-32.png">
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {{end}}
+            </table>
+        </div>
+        <div class="col-12 col-sm-1">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-sm-1">
+        </div>
+
+        <div class="col-12 col-sm-10">
+            <button type="button" class="btn" data-toggle="modal"
+                    data-target="#createLineDialog">
+                <img src="static/img/icons8-table-addRow-32.png">
+            </button>
+        </div>
+
+        <div class="col-12 col-sm-1">
+        </div>
+    </div>
+</div>
+
+<script src="static/js/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="static/js/popper.min.js" crossorigin="anonymous"></script>
+<script src="static/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

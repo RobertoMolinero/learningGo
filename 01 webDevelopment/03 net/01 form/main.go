@@ -6,15 +6,15 @@ import (
 	"net/http"
 )
 
-type hotdog int
+type input string
 
-func (h hotdog) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	e := r.ParseForm()
+func (h input) ServeHTTP(res http.ResponseWriter, req *http.Request) {
+	e := req.ParseForm()
 	if e != nil {
 		log.Fatalln(e)
 	}
 
-	tpl.Execute(w, r.Form)
+	tpl.Execute(res, req.Form)
 }
 
 var tpl *template.Template
@@ -24,6 +24,6 @@ func init() {
 }
 
 func main() {
-	var d hotdog
+	var d input
 	http.ListenAndServe(":8080", d)
 }
