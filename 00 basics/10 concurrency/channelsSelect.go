@@ -36,9 +36,8 @@ func receiveThree(e, o, q <-chan int) {
 				fmt.Println("From the quit channel:", v, ok)
 				fmt.Println("The channel is already closed!")
 				return
-			} else {
-				fmt.Println("From the quit channel:", v)
 			}
+			fmt.Println("From the quit channel:", v)
 			return
 		}
 	}

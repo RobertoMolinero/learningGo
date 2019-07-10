@@ -47,8 +47,8 @@ func main() {
 	fmt.Println(&homer)
 }
 
-func (pointerToPerson *person) updateFirstName(newFirstName string) {
-	(*pointerToPerson).firstName = newFirstName
+func (p *person) updateFirstName(newFirstName string) {
+	(*p).firstName = newFirstName
 }
 
 func (p person) print() {

@@ -1,4 +1,4 @@
-// Package mymath provides ACME inc math solutions.
+// Package myMath provides ACME inc math solutions.
 package myMath
 
 // Sum adds an unlimited number of values of type int.

@@ -1,11 +1,13 @@
 package sortMultiple
 
+// Book Structure for storing a book
 type Book struct {
 	Title  string
 	Author string
 	Year   int
 }
 
+// BookSort A slice of books that can be sorted by different attributes
 type BookSort struct {
 	set  []Book
 	less func(i, j Book) bool

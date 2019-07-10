@@ -6,9 +6,13 @@ import (
 )
 
 var (
+	// Trace Fine granular information about the functions used
 	Trace   *log.Logger
+	// Info Standard information about the functions used
 	Info    *log.Logger
+	// Warning Warnings about potential sources of error
 	Warning *log.Logger
+	// Error Messages about operations that could not be completed successfully
 	Error   *log.Logger
 )
 

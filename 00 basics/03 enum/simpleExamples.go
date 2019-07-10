@@ -11,9 +11,12 @@ var x hotdog
 var y int
 
 const (
+	// MONDAY The first/second day of the week
 	MONDAY = iota + 1
+	// TUESDAY The day after MONDAY
 	TUESDAY
 	_
+	// THURSDAY The day two days after TUESDAY
 	THURSDAY
 )
 
@@ -48,19 +51,6 @@ func main() {
 	fmt.Printf("%d\t\t\t%b\n", kb, kb)
 	fmt.Printf("%d\t\t\t%b\n", mb, mb)
 	fmt.Printf("%d\t\t%b\n", gb, gb)
-}
-
-type Direction int
-
-const (
-	North Direction = iota
-	East
-	South
-	West
-)
-
-func (d Direction) String() string {
-	return [...]string{"North", "East", "South", "West"}[d]
 }
 
 const (

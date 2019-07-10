@@ -2,12 +2,17 @@ package main
 
 import "fmt"
 
+// WindDirection The numeric coding of the Wind Directions
 type WindDirection int
 
 const (
+	// North The Direction North (Up)
 	North WindDirection = iota
+	// East The Direction East (Right)
 	East
+	// South The Direction South (Down)
 	South
+	// West The Direction West (Left)
 	West
 )
 

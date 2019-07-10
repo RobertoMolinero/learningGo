@@ -10,6 +10,7 @@ type character struct {
 	Age   int
 }
 
+// ByAge A slice of characters that should be sorted by the age of the elements
 type ByAge []character
 
 func (a ByAge) Len() int {
@@ -24,6 +25,7 @@ func (a ByAge) Swap(i, j int) {
 	a[i], a[j] = a[j], a[i]
 }
 
+// ByName A slice of characters that should be sorted by the name of the elements
 type ByName []character
 
 func (n ByName) Len() int {
