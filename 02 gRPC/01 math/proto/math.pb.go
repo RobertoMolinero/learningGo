@@ -149,158 +149,236 @@ func (m *SumResponse) GetResult() int32 {
 	return 0
 }
 
-type PrimeRequest struct {
+type PrimeNumberDecompositionRequest struct {
 	Number               int32    `protobuf:"varint,1,opt,name=number,proto3" json:"number,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *PrimeRequest) Reset()         { *m = PrimeRequest{} }
-func (m *PrimeRequest) String() string { return proto.CompactTextString(m) }
-func (*PrimeRequest) ProtoMessage()    {}
-func (*PrimeRequest) Descriptor() ([]byte, []int) {
+func (m *PrimeNumberDecompositionRequest) Reset()         { *m = PrimeNumberDecompositionRequest{} }
+func (m *PrimeNumberDecompositionRequest) String() string { return proto.CompactTextString(m) }
+func (*PrimeNumberDecompositionRequest) ProtoMessage()    {}
+func (*PrimeNumberDecompositionRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f139a3799a86a974, []int{3}
 }
 
-func (m *PrimeRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_PrimeRequest.Unmarshal(m, b)
+func (m *PrimeNumberDecompositionRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PrimeNumberDecompositionRequest.Unmarshal(m, b)
 }
-func (m *PrimeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_PrimeRequest.Marshal(b, m, deterministic)
+func (m *PrimeNumberDecompositionRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PrimeNumberDecompositionRequest.Marshal(b, m, deterministic)
 }
-func (m *PrimeRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PrimeRequest.Merge(m, src)
+func (m *PrimeNumberDecompositionRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PrimeNumberDecompositionRequest.Merge(m, src)
 }
-func (m *PrimeRequest) XXX_Size() int {
-	return xxx_messageInfo_PrimeRequest.Size(m)
+func (m *PrimeNumberDecompositionRequest) XXX_Size() int {
+	return xxx_messageInfo_PrimeNumberDecompositionRequest.Size(m)
 }
-func (m *PrimeRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_PrimeRequest.DiscardUnknown(m)
+func (m *PrimeNumberDecompositionRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_PrimeNumberDecompositionRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_PrimeRequest proto.InternalMessageInfo
+var xxx_messageInfo_PrimeNumberDecompositionRequest proto.InternalMessageInfo
 
-func (m *PrimeRequest) GetNumber() int32 {
+func (m *PrimeNumberDecompositionRequest) GetNumber() int32 {
 	if m != nil {
 		return m.Number
 	}
 	return 0
 }
 
-type PrimeResponse struct {
+type PrimeNumberDecompositionResponse struct {
 	Divider              int32    `protobuf:"varint,1,opt,name=divider,proto3" json:"divider,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *PrimeResponse) Reset()         { *m = PrimeResponse{} }
-func (m *PrimeResponse) String() string { return proto.CompactTextString(m) }
-func (*PrimeResponse) ProtoMessage()    {}
-func (*PrimeResponse) Descriptor() ([]byte, []int) {
+func (m *PrimeNumberDecompositionResponse) Reset()         { *m = PrimeNumberDecompositionResponse{} }
+func (m *PrimeNumberDecompositionResponse) String() string { return proto.CompactTextString(m) }
+func (*PrimeNumberDecompositionResponse) ProtoMessage()    {}
+func (*PrimeNumberDecompositionResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f139a3799a86a974, []int{4}
 }
 
-func (m *PrimeResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_PrimeResponse.Unmarshal(m, b)
+func (m *PrimeNumberDecompositionResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PrimeNumberDecompositionResponse.Unmarshal(m, b)
 }
-func (m *PrimeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_PrimeResponse.Marshal(b, m, deterministic)
+func (m *PrimeNumberDecompositionResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PrimeNumberDecompositionResponse.Marshal(b, m, deterministic)
 }
-func (m *PrimeResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PrimeResponse.Merge(m, src)
+func (m *PrimeNumberDecompositionResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PrimeNumberDecompositionResponse.Merge(m, src)
 }
-func (m *PrimeResponse) XXX_Size() int {
-	return xxx_messageInfo_PrimeResponse.Size(m)
+func (m *PrimeNumberDecompositionResponse) XXX_Size() int {
+	return xxx_messageInfo_PrimeNumberDecompositionResponse.Size(m)
 }
-func (m *PrimeResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_PrimeResponse.DiscardUnknown(m)
+func (m *PrimeNumberDecompositionResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_PrimeNumberDecompositionResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_PrimeResponse proto.InternalMessageInfo
+var xxx_messageInfo_PrimeNumberDecompositionResponse proto.InternalMessageInfo
 
-func (m *PrimeResponse) GetDivider() int32 {
+func (m *PrimeNumberDecompositionResponse) GetDivider() int32 {
 	if m != nil {
 		return m.Divider
 	}
 	return 0
 }
 
-type AverageRequest struct {
+type ComputeAverageRequest struct {
 	Number               int32    `protobuf:"varint,1,opt,name=number,proto3" json:"number,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *AverageRequest) Reset()         { *m = AverageRequest{} }
-func (m *AverageRequest) String() string { return proto.CompactTextString(m) }
-func (*AverageRequest) ProtoMessage()    {}
-func (*AverageRequest) Descriptor() ([]byte, []int) {
+func (m *ComputeAverageRequest) Reset()         { *m = ComputeAverageRequest{} }
+func (m *ComputeAverageRequest) String() string { return proto.CompactTextString(m) }
+func (*ComputeAverageRequest) ProtoMessage()    {}
+func (*ComputeAverageRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f139a3799a86a974, []int{5}
 }
 
-func (m *AverageRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_AverageRequest.Unmarshal(m, b)
+func (m *ComputeAverageRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ComputeAverageRequest.Unmarshal(m, b)
 }
-func (m *AverageRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_AverageRequest.Marshal(b, m, deterministic)
+func (m *ComputeAverageRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ComputeAverageRequest.Marshal(b, m, deterministic)
 }
-func (m *AverageRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AverageRequest.Merge(m, src)
+func (m *ComputeAverageRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ComputeAverageRequest.Merge(m, src)
 }
-func (m *AverageRequest) XXX_Size() int {
-	return xxx_messageInfo_AverageRequest.Size(m)
+func (m *ComputeAverageRequest) XXX_Size() int {
+	return xxx_messageInfo_ComputeAverageRequest.Size(m)
 }
-func (m *AverageRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_AverageRequest.DiscardUnknown(m)
+func (m *ComputeAverageRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ComputeAverageRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_AverageRequest proto.InternalMessageInfo
+var xxx_messageInfo_ComputeAverageRequest proto.InternalMessageInfo
 
-func (m *AverageRequest) GetNumber() int32 {
+func (m *ComputeAverageRequest) GetNumber() int32 {
 	if m != nil {
 		return m.Number
 	}
 	return 0
 }
 
-type AverageResponse struct {
+type ComputeAverageResponse struct {
 	Average              float64  `protobuf:"fixed64,1,opt,name=average,proto3" json:"average,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *AverageResponse) Reset()         { *m = AverageResponse{} }
-func (m *AverageResponse) String() string { return proto.CompactTextString(m) }
-func (*AverageResponse) ProtoMessage()    {}
-func (*AverageResponse) Descriptor() ([]byte, []int) {
+func (m *ComputeAverageResponse) Reset()         { *m = ComputeAverageResponse{} }
+func (m *ComputeAverageResponse) String() string { return proto.CompactTextString(m) }
+func (*ComputeAverageResponse) ProtoMessage()    {}
+func (*ComputeAverageResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f139a3799a86a974, []int{6}
 }
 
-func (m *AverageResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_AverageResponse.Unmarshal(m, b)
+func (m *ComputeAverageResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ComputeAverageResponse.Unmarshal(m, b)
 }
-func (m *AverageResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_AverageResponse.Marshal(b, m, deterministic)
+func (m *ComputeAverageResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ComputeAverageResponse.Marshal(b, m, deterministic)
 }
-func (m *AverageResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AverageResponse.Merge(m, src)
+func (m *ComputeAverageResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ComputeAverageResponse.Merge(m, src)
 }
-func (m *AverageResponse) XXX_Size() int {
-	return xxx_messageInfo_AverageResponse.Size(m)
+func (m *ComputeAverageResponse) XXX_Size() int {
+	return xxx_messageInfo_ComputeAverageResponse.Size(m)
 }
-func (m *AverageResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_AverageResponse.DiscardUnknown(m)
+func (m *ComputeAverageResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ComputeAverageResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_AverageResponse proto.InternalMessageInfo
+var xxx_messageInfo_ComputeAverageResponse proto.InternalMessageInfo
 
-func (m *AverageResponse) GetAverage() float64 {
+func (m *ComputeAverageResponse) GetAverage() float64 {
 	if m != nil {
 		return m.Average
+	}
+	return 0
+}
+
+type FindMaximumRequest struct {
+	Number               int32    `protobuf:"varint,1,opt,name=number,proto3" json:"number,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *FindMaximumRequest) Reset()         { *m = FindMaximumRequest{} }
+func (m *FindMaximumRequest) String() string { return proto.CompactTextString(m) }
+func (*FindMaximumRequest) ProtoMessage()    {}
+func (*FindMaximumRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_f139a3799a86a974, []int{7}
+}
+
+func (m *FindMaximumRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FindMaximumRequest.Unmarshal(m, b)
+}
+func (m *FindMaximumRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FindMaximumRequest.Marshal(b, m, deterministic)
+}
+func (m *FindMaximumRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FindMaximumRequest.Merge(m, src)
+}
+func (m *FindMaximumRequest) XXX_Size() int {
+	return xxx_messageInfo_FindMaximumRequest.Size(m)
+}
+func (m *FindMaximumRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_FindMaximumRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_FindMaximumRequest proto.InternalMessageInfo
+
+func (m *FindMaximumRequest) GetNumber() int32 {
+	if m != nil {
+		return m.Number
+	}
+	return 0
+}
+
+type FindMaximumResponse struct {
+	Number               int32    `protobuf:"varint,1,opt,name=number,proto3" json:"number,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *FindMaximumResponse) Reset()         { *m = FindMaximumResponse{} }
+func (m *FindMaximumResponse) String() string { return proto.CompactTextString(m) }
+func (*FindMaximumResponse) ProtoMessage()    {}
+func (*FindMaximumResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_f139a3799a86a974, []int{8}
+}
+
+func (m *FindMaximumResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FindMaximumResponse.Unmarshal(m, b)
+}
+func (m *FindMaximumResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FindMaximumResponse.Marshal(b, m, deterministic)
+}
+func (m *FindMaximumResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FindMaximumResponse.Merge(m, src)
+}
+func (m *FindMaximumResponse) XXX_Size() int {
+	return xxx_messageInfo_FindMaximumResponse.Size(m)
+}
+func (m *FindMaximumResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_FindMaximumResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_FindMaximumResponse proto.InternalMessageInfo
+
+func (m *FindMaximumResponse) GetNumber() int32 {
+	if m != nil {
+		return m.Number
 	}
 	return 0
 }
@@ -309,35 +387,41 @@ func init() {
 	proto.RegisterType((*Summands)(nil), "math.Summands")
 	proto.RegisterType((*SumRequest)(nil), "math.SumRequest")
 	proto.RegisterType((*SumResponse)(nil), "math.SumResponse")
-	proto.RegisterType((*PrimeRequest)(nil), "math.PrimeRequest")
-	proto.RegisterType((*PrimeResponse)(nil), "math.PrimeResponse")
-	proto.RegisterType((*AverageRequest)(nil), "math.AverageRequest")
-	proto.RegisterType((*AverageResponse)(nil), "math.AverageResponse")
+	proto.RegisterType((*PrimeNumberDecompositionRequest)(nil), "math.PrimeNumberDecompositionRequest")
+	proto.RegisterType((*PrimeNumberDecompositionResponse)(nil), "math.PrimeNumberDecompositionResponse")
+	proto.RegisterType((*ComputeAverageRequest)(nil), "math.ComputeAverageRequest")
+	proto.RegisterType((*ComputeAverageResponse)(nil), "math.ComputeAverageResponse")
+	proto.RegisterType((*FindMaximumRequest)(nil), "math.FindMaximumRequest")
+	proto.RegisterType((*FindMaximumResponse)(nil), "math.FindMaximumResponse")
 }
 
 func init() { proto.RegisterFile("math.proto", fileDescriptor_f139a3799a86a974) }
 
 var fileDescriptor_f139a3799a86a974 = []byte{
-	// 304 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x92, 0x4b, 0x4b, 0xc3, 0x40,
-	0x14, 0x85, 0x1d, 0xb5, 0xad, 0xdc, 0x6a, 0xd5, 0xb1, 0x96, 0x50, 0x5c, 0xc8, 0x80, 0x52, 0x1f,
-	0x14, 0xa9, 0x1b, 0xb7, 0x55, 0xc1, 0x9d, 0x48, 0xb2, 0x73, 0x97, 0x26, 0x57, 0x1d, 0x70, 0x32,
-	0x71, 0x1e, 0xf9, 0x89, 0xfe, 0x2e, 0xe9, 0x3c, 0x62, 0xeb, 0xc6, 0x55, 0x72, 0x0e, 0xe7, 0x7e,
-	0xe7, 0xde, 0x10, 0x00, 0x91, 0x9b, 0x8f, 0x69, 0xad, 0xa4, 0x91, 0x74, 0x7b, 0xf9, 0xce, 0xee,
-	0x60, 0x27, 0xb3, 0x42, 0xe4, 0x55, 0xa9, 0xe9, 0x10, 0x3a, 0x6f, 0x5c, 0x69, 0x93, 0x90, 0x53,
-	0x32, 0xe9, 0xa4, 0x5e, 0xd0, 0x11, 0x74, 0x35, 0x16, 0xb2, 0x2a, 0x93, 0x4d, 0x67, 0x07, 0xc5,
-	0x2e, 0x01, 0x32, 0x2b, 0x52, 0xfc, 0xb2, 0xa8, 0x0d, 0x3d, 0x01, 0xa2, 0xdd, 0x5c, 0x7f, 0x36,
-	0x98, 0xba, 0x96, 0x88, 0x4d, 0x89, 0x66, 0x67, 0xd0, 0x77, 0x59, 0x5d, 0xcb, 0x4a, 0xe3, 0x12,
-	0xa9, 0x50, 0xdb, 0xcf, 0xd8, 0x14, 0x14, 0x3b, 0x87, 0xdd, 0x17, 0xc5, 0x05, 0x46, 0xe8, 0x08,
-	0xba, 0x95, 0x15, 0x0b, 0x54, 0x31, 0xe7, 0x15, 0xbb, 0x80, 0xbd, 0x90, 0x0b, 0xc0, 0x04, 0x7a,
-	0x25, 0x6f, 0x78, 0xd9, 0x26, 0xa3, 0x64, 0x13, 0x18, 0xcc, 0x1b, 0x54, 0xf9, 0xfb, 0xbf, 0xd0,
-	0x2b, 0xd8, 0x6f, 0x93, 0xbf, 0xd8, 0xdc, 0x5b, 0x2e, 0x4b, 0xd2, 0x28, 0x67, 0xdf, 0xc4, 0x5d,
-	0x9f, 0xa1, 0x6a, 0x78, 0x81, 0xf4, 0x1a, 0xb6, 0x32, 0x2b, 0xe8, 0x41, 0x7b, 0x79, 0x28, 0x1b,
-	0x1f, 0xae, 0x38, 0x1e, 0xca, 0x36, 0xe8, 0x13, 0x24, 0x6e, 0xfd, 0x67, 0x57, 0xfc, 0x88, 0x85,
-	0x14, 0xb5, 0xd4, 0xdc, 0x70, 0x59, 0x51, 0xea, 0x07, 0x56, 0x3f, 0xc3, 0xf8, 0x68, 0xcd, 0x8b,
-	0x98, 0x1b, 0x42, 0xe7, 0x30, 0x78, 0x90, 0xa2, 0xb6, 0x06, 0xc3, 0xe6, 0x74, 0xe8, 0xa3, 0xeb,
-	0x27, 0x8f, 0x8f, 0xff, 0xb8, 0x11, 0x31, 0x21, 0xf7, 0xbd, 0xd7, 0x8e, 0xfb, 0x1d, 0x16, 0x5d,
-	0xf7, 0xb8, 0xfd, 0x09, 0x00, 0x00, 0xff, 0xff, 0x00, 0x8c, 0x21, 0x49, 0x23, 0x02, 0x00, 0x00,
+	// 359 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x93, 0x5f, 0x4b, 0xf3, 0x30,
+	0x14, 0xc6, 0xdf, 0xec, 0x75, 0x9b, 0x9c, 0xc2, 0xd0, 0xa8, 0xa3, 0xd6, 0x81, 0x23, 0x30, 0x19,
+	0x32, 0xe7, 0x98, 0x37, 0x0a, 0xde, 0xf8, 0x07, 0xf1, 0x66, 0x2a, 0xed, 0x9d, 0x77, 0xdd, 0x1a,
+	0x5d, 0xc0, 0x34, 0xb5, 0x69, 0x86, 0x5f, 0xd0, 0xef, 0x25, 0x4b, 0x9a, 0x75, 0xd3, 0x8e, 0x5d,
+	0xb5, 0xcf, 0x39, 0xe7, 0x39, 0x3f, 0x78, 0x0e, 0x01, 0xe0, 0x61, 0x36, 0xed, 0x27, 0xa9, 0xc8,
+	0x04, 0xde, 0x9a, 0xff, 0x93, 0x4b, 0xd8, 0x0e, 0x14, 0xe7, 0x61, 0x1c, 0x49, 0xbc, 0x0f, 0xd5,
+	0x37, 0x96, 0xca, 0xcc, 0x45, 0x6d, 0xd4, 0xad, 0xfa, 0x46, 0xe0, 0x26, 0xd4, 0x24, 0x9d, 0x88,
+	0x38, 0x72, 0x2b, 0xba, 0x9c, 0x2b, 0x72, 0x0a, 0x10, 0x28, 0xee, 0xd3, 0x4f, 0x45, 0x65, 0x86,
+	0x5b, 0x80, 0xa4, 0xf6, 0x39, 0xc3, 0x46, 0x5f, 0x53, 0xec, 0x5a, 0x1f, 0x49, 0xd2, 0x01, 0x47,
+	0xcf, 0xca, 0x44, 0xc4, 0x92, 0xce, 0x57, 0xa6, 0x54, 0xaa, 0x0f, 0x4b, 0xca, 0x15, 0xb9, 0x82,
+	0xe3, 0x97, 0x94, 0x71, 0xfa, 0xa4, 0xf8, 0x98, 0xa6, 0xf7, 0x74, 0x22, 0x78, 0x22, 0x24, 0xcb,
+	0x98, 0x88, 0x2d, 0xa7, 0x09, 0xb5, 0x58, 0x77, 0xad, 0xd5, 0x28, 0x72, 0x0d, 0xed, 0xf5, 0xd6,
+	0x1c, 0xeb, 0x42, 0x3d, 0x62, 0x33, 0x16, 0x2d, 0xcc, 0x56, 0x92, 0x73, 0x38, 0xb8, 0x13, 0x3c,
+	0x51, 0x19, 0xbd, 0x99, 0xd1, 0x34, 0x7c, 0xa7, 0x9b, 0x70, 0x43, 0x68, 0xfe, 0x36, 0x14, 0x90,
+	0xd0, 0x94, 0xb4, 0x05, 0xf9, 0x56, 0x92, 0x1e, 0xe0, 0x07, 0x16, 0x47, 0xa3, 0xf0, 0x8b, 0xf1,
+	0x22, 0xb8, 0x75, 0x84, 0x33, 0xd8, 0x5b, 0x99, 0x2e, 0xa2, 0x2b, 0x1b, 0x1f, 0x7e, 0x57, 0xc0,
+	0x19, 0x85, 0xd9, 0x34, 0xa0, 0xe9, 0x8c, 0x4d, 0x28, 0xee, 0xc1, 0xff, 0x40, 0x71, 0xbc, 0xb3,
+	0xb8, 0x45, 0xce, 0xf3, 0x76, 0x97, 0x2a, 0x66, 0x27, 0xf9, 0x87, 0x39, 0xb8, 0xeb, 0xd2, 0xc3,
+	0x1d, 0x63, 0xd8, 0x70, 0x18, 0xef, 0x64, 0xd3, 0x98, 0x85, 0x0d, 0x10, 0x7e, 0x86, 0xc6, 0x6a,
+	0x7a, 0xf8, 0xc8, 0xb8, 0x4b, 0x8f, 0xe0, 0xb5, 0xca, 0x9b, 0x76, 0x61, 0x17, 0xe1, 0x47, 0x70,
+	0x96, 0xc2, 0xc2, 0xae, 0x31, 0xfc, 0x4d, 0xdb, 0x3b, 0x2c, 0xe9, 0x14, 0x7b, 0x06, 0xe8, 0xb6,
+	0xfe, 0x5a, 0xd5, 0xcf, 0x63, 0x5c, 0xd3, 0x9f, 0x8b, 0x9f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x2b,
+	0x6b, 0x94, 0x34, 0x33, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -348,41 +432,43 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// SumServiceClient is the client API for SumService service.
+// MathServiceClient is the client API for MathService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type SumServiceClient interface {
+type MathServiceClient interface {
 	// Unary Operation
 	Sum(ctx context.Context, in *SumRequest, opts ...grpc.CallOption) (*SumResponse, error)
 	// Server Streaming
-	PrimeNumberDecomposition(ctx context.Context, in *PrimeRequest, opts ...grpc.CallOption) (SumService_PrimeNumberDecompositionClient, error)
+	PrimeNumberDecomposition(ctx context.Context, in *PrimeNumberDecompositionRequest, opts ...grpc.CallOption) (MathService_PrimeNumberDecompositionClient, error)
 	// Client Streaming
-	ComputeAverage(ctx context.Context, opts ...grpc.CallOption) (SumService_ComputeAverageClient, error)
+	ComputeAverage(ctx context.Context, opts ...grpc.CallOption) (MathService_ComputeAverageClient, error)
+	// Bidirectional Streaming
+	FindMaximum(ctx context.Context, opts ...grpc.CallOption) (MathService_FindMaximumClient, error)
 }
 
-type sumServiceClient struct {
+type mathServiceClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewSumServiceClient(cc *grpc.ClientConn) SumServiceClient {
-	return &sumServiceClient{cc}
+func NewMathServiceClient(cc *grpc.ClientConn) MathServiceClient {
+	return &mathServiceClient{cc}
 }
 
-func (c *sumServiceClient) Sum(ctx context.Context, in *SumRequest, opts ...grpc.CallOption) (*SumResponse, error) {
+func (c *mathServiceClient) Sum(ctx context.Context, in *SumRequest, opts ...grpc.CallOption) (*SumResponse, error) {
 	out := new(SumResponse)
-	err := c.cc.Invoke(ctx, "/math.SumService/Sum", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/math.MathService/Sum", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sumServiceClient) PrimeNumberDecomposition(ctx context.Context, in *PrimeRequest, opts ...grpc.CallOption) (SumService_PrimeNumberDecompositionClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_SumService_serviceDesc.Streams[0], "/math.SumService/PrimeNumberDecomposition", opts...)
+func (c *mathServiceClient) PrimeNumberDecomposition(ctx context.Context, in *PrimeNumberDecompositionRequest, opts ...grpc.CallOption) (MathService_PrimeNumberDecompositionClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_MathService_serviceDesc.Streams[0], "/math.MathService/PrimeNumberDecomposition", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &sumServicePrimeNumberDecompositionClient{stream}
+	x := &mathServicePrimeNumberDecompositionClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -392,168 +478,236 @@ func (c *sumServiceClient) PrimeNumberDecomposition(ctx context.Context, in *Pri
 	return x, nil
 }
 
-type SumService_PrimeNumberDecompositionClient interface {
-	Recv() (*PrimeResponse, error)
+type MathService_PrimeNumberDecompositionClient interface {
+	Recv() (*PrimeNumberDecompositionResponse, error)
 	grpc.ClientStream
 }
 
-type sumServicePrimeNumberDecompositionClient struct {
+type mathServicePrimeNumberDecompositionClient struct {
 	grpc.ClientStream
 }
 
-func (x *sumServicePrimeNumberDecompositionClient) Recv() (*PrimeResponse, error) {
-	m := new(PrimeResponse)
+func (x *mathServicePrimeNumberDecompositionClient) Recv() (*PrimeNumberDecompositionResponse, error) {
+	m := new(PrimeNumberDecompositionResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
 	return m, nil
 }
 
-func (c *sumServiceClient) ComputeAverage(ctx context.Context, opts ...grpc.CallOption) (SumService_ComputeAverageClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_SumService_serviceDesc.Streams[1], "/math.SumService/ComputeAverage", opts...)
+func (c *mathServiceClient) ComputeAverage(ctx context.Context, opts ...grpc.CallOption) (MathService_ComputeAverageClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_MathService_serviceDesc.Streams[1], "/math.MathService/ComputeAverage", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &sumServiceComputeAverageClient{stream}
+	x := &mathServiceComputeAverageClient{stream}
 	return x, nil
 }
 
-type SumService_ComputeAverageClient interface {
-	Send(*AverageRequest) error
-	CloseAndRecv() (*AverageResponse, error)
+type MathService_ComputeAverageClient interface {
+	Send(*ComputeAverageRequest) error
+	CloseAndRecv() (*ComputeAverageResponse, error)
 	grpc.ClientStream
 }
 
-type sumServiceComputeAverageClient struct {
+type mathServiceComputeAverageClient struct {
 	grpc.ClientStream
 }
 
-func (x *sumServiceComputeAverageClient) Send(m *AverageRequest) error {
+func (x *mathServiceComputeAverageClient) Send(m *ComputeAverageRequest) error {
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *sumServiceComputeAverageClient) CloseAndRecv() (*AverageResponse, error) {
+func (x *mathServiceComputeAverageClient) CloseAndRecv() (*ComputeAverageResponse, error) {
 	if err := x.ClientStream.CloseSend(); err != nil {
 		return nil, err
 	}
-	m := new(AverageResponse)
+	m := new(ComputeAverageResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
 	return m, nil
 }
 
-// SumServiceServer is the server API for SumService service.
-type SumServiceServer interface {
+func (c *mathServiceClient) FindMaximum(ctx context.Context, opts ...grpc.CallOption) (MathService_FindMaximumClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_MathService_serviceDesc.Streams[2], "/math.MathService/FindMaximum", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &mathServiceFindMaximumClient{stream}
+	return x, nil
+}
+
+type MathService_FindMaximumClient interface {
+	Send(*FindMaximumRequest) error
+	Recv() (*FindMaximumResponse, error)
+	grpc.ClientStream
+}
+
+type mathServiceFindMaximumClient struct {
+	grpc.ClientStream
+}
+
+func (x *mathServiceFindMaximumClient) Send(m *FindMaximumRequest) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *mathServiceFindMaximumClient) Recv() (*FindMaximumResponse, error) {
+	m := new(FindMaximumResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+// MathServiceServer is the server API for MathService service.
+type MathServiceServer interface {
 	// Unary Operation
 	Sum(context.Context, *SumRequest) (*SumResponse, error)
 	// Server Streaming
-	PrimeNumberDecomposition(*PrimeRequest, SumService_PrimeNumberDecompositionServer) error
+	PrimeNumberDecomposition(*PrimeNumberDecompositionRequest, MathService_PrimeNumberDecompositionServer) error
 	// Client Streaming
-	ComputeAverage(SumService_ComputeAverageServer) error
+	ComputeAverage(MathService_ComputeAverageServer) error
+	// Bidirectional Streaming
+	FindMaximum(MathService_FindMaximumServer) error
 }
 
-// UnimplementedSumServiceServer can be embedded to have forward compatible implementations.
-type UnimplementedSumServiceServer struct {
+// UnimplementedMathServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedMathServiceServer struct {
 }
 
-func (*UnimplementedSumServiceServer) Sum(ctx context.Context, req *SumRequest) (*SumResponse, error) {
+func (*UnimplementedMathServiceServer) Sum(ctx context.Context, req *SumRequest) (*SumResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Sum not implemented")
 }
-func (*UnimplementedSumServiceServer) PrimeNumberDecomposition(req *PrimeRequest, srv SumService_PrimeNumberDecompositionServer) error {
+func (*UnimplementedMathServiceServer) PrimeNumberDecomposition(req *PrimeNumberDecompositionRequest, srv MathService_PrimeNumberDecompositionServer) error {
 	return status.Errorf(codes.Unimplemented, "method PrimeNumberDecomposition not implemented")
 }
-func (*UnimplementedSumServiceServer) ComputeAverage(srv SumService_ComputeAverageServer) error {
+func (*UnimplementedMathServiceServer) ComputeAverage(srv MathService_ComputeAverageServer) error {
 	return status.Errorf(codes.Unimplemented, "method ComputeAverage not implemented")
 }
-
-func RegisterSumServiceServer(s *grpc.Server, srv SumServiceServer) {
-	s.RegisterService(&_SumService_serviceDesc, srv)
+func (*UnimplementedMathServiceServer) FindMaximum(srv MathService_FindMaximumServer) error {
+	return status.Errorf(codes.Unimplemented, "method FindMaximum not implemented")
 }
 
-func _SumService_Sum_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func RegisterMathServiceServer(s *grpc.Server, srv MathServiceServer) {
+	s.RegisterService(&_MathService_serviceDesc, srv)
+}
+
+func _MathService_Sum_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SumRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SumServiceServer).Sum(ctx, in)
+		return srv.(MathServiceServer).Sum(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/math.SumService/Sum",
+		FullMethod: "/math.MathService/Sum",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SumServiceServer).Sum(ctx, req.(*SumRequest))
+		return srv.(MathServiceServer).Sum(ctx, req.(*SumRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SumService_PrimeNumberDecomposition_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(PrimeRequest)
+func _MathService_PrimeNumberDecomposition_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(PrimeNumberDecompositionRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(SumServiceServer).PrimeNumberDecomposition(m, &sumServicePrimeNumberDecompositionServer{stream})
+	return srv.(MathServiceServer).PrimeNumberDecomposition(m, &mathServicePrimeNumberDecompositionServer{stream})
 }
 
-type SumService_PrimeNumberDecompositionServer interface {
-	Send(*PrimeResponse) error
+type MathService_PrimeNumberDecompositionServer interface {
+	Send(*PrimeNumberDecompositionResponse) error
 	grpc.ServerStream
 }
 
-type sumServicePrimeNumberDecompositionServer struct {
+type mathServicePrimeNumberDecompositionServer struct {
 	grpc.ServerStream
 }
 
-func (x *sumServicePrimeNumberDecompositionServer) Send(m *PrimeResponse) error {
+func (x *mathServicePrimeNumberDecompositionServer) Send(m *PrimeNumberDecompositionResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _SumService_ComputeAverage_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(SumServiceServer).ComputeAverage(&sumServiceComputeAverageServer{stream})
+func _MathService_ComputeAverage_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(MathServiceServer).ComputeAverage(&mathServiceComputeAverageServer{stream})
 }
 
-type SumService_ComputeAverageServer interface {
-	SendAndClose(*AverageResponse) error
-	Recv() (*AverageRequest, error)
+type MathService_ComputeAverageServer interface {
+	SendAndClose(*ComputeAverageResponse) error
+	Recv() (*ComputeAverageRequest, error)
 	grpc.ServerStream
 }
 
-type sumServiceComputeAverageServer struct {
+type mathServiceComputeAverageServer struct {
 	grpc.ServerStream
 }
 
-func (x *sumServiceComputeAverageServer) SendAndClose(m *AverageResponse) error {
+func (x *mathServiceComputeAverageServer) SendAndClose(m *ComputeAverageResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *sumServiceComputeAverageServer) Recv() (*AverageRequest, error) {
-	m := new(AverageRequest)
+func (x *mathServiceComputeAverageServer) Recv() (*ComputeAverageRequest, error) {
+	m := new(ComputeAverageRequest)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
 	return m, nil
 }
 
-var _SumService_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "math.SumService",
-	HandlerType: (*SumServiceServer)(nil),
+func _MathService_FindMaximum_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(MathServiceServer).FindMaximum(&mathServiceFindMaximumServer{stream})
+}
+
+type MathService_FindMaximumServer interface {
+	Send(*FindMaximumResponse) error
+	Recv() (*FindMaximumRequest, error)
+	grpc.ServerStream
+}
+
+type mathServiceFindMaximumServer struct {
+	grpc.ServerStream
+}
+
+func (x *mathServiceFindMaximumServer) Send(m *FindMaximumResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *mathServiceFindMaximumServer) Recv() (*FindMaximumRequest, error) {
+	m := new(FindMaximumRequest)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+var _MathService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "math.MathService",
+	HandlerType: (*MathServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Sum",
-			Handler:    _SumService_Sum_Handler,
+			Handler:    _MathService_Sum_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "PrimeNumberDecomposition",
-			Handler:       _SumService_PrimeNumberDecomposition_Handler,
+			Handler:       _MathService_PrimeNumberDecomposition_Handler,
 			ServerStreams: true,
 		},
 		{
 			StreamName:    "ComputeAverage",
-			Handler:       _SumService_ComputeAverage_Handler,
+			Handler:       _MathService_ComputeAverage_Handler,
+			ClientStreams: true,
+		},
+		{
+			StreamName:    "FindMaximum",
+			Handler:       _MathService_FindMaximum_Handler,
+			ServerStreams: true,
 			ClientStreams: true,
 		},
 	},

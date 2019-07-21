@@ -43,14 +43,18 @@ message HelloWorldEveryoneResponse {
 
 service HelloWorldService {
     // Unary Operation
-    rpc HelloWorld(HelloWorldRequest) returns (HelloWorldResponse) {};
+    rpc HelloWorld (HelloWorldRequest) returns (HelloWorldResponse) {
+    };
 
     // Server Streaming
-    rpc HelloWorldRepeated(HelloWorldRepeatedRequest) returns (stream HelloWorldRepeatedResponse) {};
+    rpc HelloWorldRepeated (HelloWorldRepeatedRequest) returns (stream HelloWorldRepeatedResponse) {
+    };
 
     // Client Streaming
-    rpc HelloWorldLong(stream HelloWorldLongRequest) returns (HelloWorldLongResponse) {};
+    rpc HelloWorldLong (stream HelloWorldLongRequest) returns (HelloWorldLongResponse) {
+    };
 
     // Bidirectional Streaming
-    rpc HelloWorldEveryone(stream HelloWorldEveryoneRequest) returns (stream HelloWorldEveryoneResponse) {};
+    rpc HelloWorldEveryone (stream HelloWorldEveryoneRequest) returns (stream HelloWorldEveryoneResponse) {
+    };
 }

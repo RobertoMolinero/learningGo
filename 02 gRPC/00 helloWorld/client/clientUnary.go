@@ -30,7 +30,6 @@ func doUnary(client proto.HelloWorldServiceClient) {
 
 	log.Printf("Sending request: %v", request)
 	response, e := client.HelloWorld(context.Background(), request)
-
 	if e != nil {
 		log.Fatalf("Failed to call 'Greet RPC': %v", e)
 	}

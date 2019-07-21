@@ -73,6 +73,7 @@ func (*server) HelloWorldLong(stream proto.HelloWorldService_HelloWorldLongServe
 
 			log.Printf("HelloWorldLong function sends result %v", res)
 			log.Println("HelloWorldLong function is shut down...")
+
 			return stream.SendAndClose(res)
 		}
 		if e != nil {
@@ -87,6 +88,7 @@ func (*server) HelloWorldLong(stream proto.HelloWorldService_HelloWorldLongServe
 
 func (*server) HelloWorldEveryone(stream proto.HelloWorldService_HelloWorldEveryoneServer) error {
 	log.Printf("HelloWorldEveryone function was invoked with stream %v", stream)
+
 	for {
 		req, e := stream.Recv()
 		if e == io.EOF {
@@ -98,7 +100,7 @@ func (*server) HelloWorldEveryone(stream proto.HelloWorldService_HelloWorldEvery
 			return e
 		}
 
-		log.Printf("HelloWorldLong received request %v", req)
+		log.Printf("HelloWorldEveryone received request %v", req)
 
 		firstName := req.GetGreeting().GetFirstName()
 		lastName := req.GetGreeting().GetLastName()

@@ -16,32 +16,44 @@ message SumResponse {
     int32 result = 1;
 }
 
-message PrimeRequest {
+message PrimeNumberDecompositionRequest {
     int32 number = 1;
 }
 
-message PrimeResponse {
+message PrimeNumberDecompositionResponse {
     int32 divider = 1;
 }
 
-message AverageRequest {
+message ComputeAverageRequest {
     int32 number = 1;
 }
 
-message AverageResponse {
+message ComputeAverageResponse {
     double average = 1;
 }
 
-service SumService {
+message FindMaximumRequest {
+    int32 number = 1;
+}
+
+message FindMaximumResponse {
+    int32 number = 1;
+}
+
+service MathService {
     // Unary Operation
     rpc Sum (SumRequest) returns (SumResponse) {
     };
 
     // Server Streaming
-    rpc PrimeNumberDecomposition (PrimeRequest) returns (stream PrimeResponse) {
+    rpc PrimeNumberDecomposition (PrimeNumberDecompositionRequest) returns (stream PrimeNumberDecompositionResponse) {
     };
 
     // Client Streaming
-    rpc ComputeAverage (stream AverageRequest) returns (AverageResponse) {
+    rpc ComputeAverage (stream ComputeAverageRequest) returns (ComputeAverageResponse) {
+    };
+
+    // Bidirectional Streaming
+    rpc FindMaximum (stream FindMaximumRequest) returns (stream FindMaximumResponse) {
     };
 }
