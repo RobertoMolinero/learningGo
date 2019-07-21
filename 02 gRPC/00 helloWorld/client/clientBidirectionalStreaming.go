@@ -54,9 +54,9 @@ func doBidirectionalStreaming(client proto.HelloWorldServiceClient) {
 
 	go func() {
 		for _, request := range requests {
-			log.Printf("Sending request: %v\n", request)
+			log.Printf("Sending request: %v", request)
 			stream.Send(request)
-			time.Sleep(1000 * time.Millisecond)
+			time.Sleep(500 * time.Millisecond)
 		}
 		stream.CloseSend()
 	}()

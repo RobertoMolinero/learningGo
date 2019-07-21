@@ -56,24 +56,24 @@ func doBidirectionalStreaming(client proto.MathServiceClient) {
 	waitChannel := make(chan struct{})
 
 	go func() {
-		for _, request := range requests {
-			log.Printf("Sending request: %v\n", request)
-			stream.Send(request)
-			time.Sleep(1000 * time.Millisecond)
+		for _, req := range requests {
+			log.Printf("Sending request: %v", req)
+			stream.Send(req)
+			time.Sleep(500 * time.Millisecond)
 		}
 		stream.CloseSend()
 	}()
 
 	go func() {
 		for {
-			response, e := stream.Recv()
+			res, e := stream.Recv()
 			if e == io.EOF {
 				break
 			}
 			if e != nil {
 				log.Fatalf("Error while receiving data: %v", e)
 			}
-			fmt.Printf("Received: %v\n", response.Number)
+			fmt.Printf("Received: %v\n", res.Maximum)
 		}
 		close(waitChannel)
 	}()

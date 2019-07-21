@@ -44,7 +44,7 @@ func (*server) PrimeNumberDecomposition(req *proto.PrimeNumberDecompositionReque
 
 			log.Printf("PrimeNumberDecomposition function sends result %v", res)
 			stream.Send(res)
-			time.Sleep(1000 * time.Millisecond)
+			time.Sleep(500 * time.Millisecond)
 			n = n / k
 		} else {
 			k = k + 1
@@ -114,7 +114,7 @@ func (*server) FindMaximum(stream proto.MathService_FindMaximumServer) error {
 		}
 
 		res := &proto.FindMaximumResponse{
-			Number: result,
+			Maximum: result,
 		}
 
 		log.Printf("FindMaximum function sends result %v", res)
