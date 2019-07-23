@@ -3,9 +3,13 @@ package main
 import (
 	"../proto"
 	"context"
+	"fmt"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"io"
 	"log"
+	"math"
 	"net"
 	"time"
 )
@@ -124,6 +128,29 @@ func (*server) FindMaximum(stream proto.MathService_FindMaximumServer) error {
 			return e
 		}
 	}
+}
+
+func (*server) SquareRoot(ctx context.Context, req *proto.SquareRootRequest) (*proto.SquareRootResponse, error) {
+	log.Printf("SquareRoot function was invoked with request %v", req)
+
+	number := req.GetNumber()
+
+	if number < 0 {
+		return nil, status.Errorf(
+			codes.InvalidArgument,
+			fmt.Sprintf("Received a negative number: %v", number),
+		)
+	}
+
+	result := math.Sqrt(float64(number))
+	res := &proto.SquareRootResponse{
+		Root: result,
+	}
+
+	log.Printf("SquareRoot function sends result %v", res)
+	log.Println("SquareRoot function is shut down...")
+
+	return res, nil
 }
 
 func main() {
