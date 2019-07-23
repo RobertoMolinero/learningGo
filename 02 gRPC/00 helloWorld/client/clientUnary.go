@@ -34,6 +34,6 @@ func doUnary(client proto.HelloWorldServiceClient) {
 		log.Fatalf("Failed to call 'Greet RPC': %v", e)
 	}
 
-	log.Printf("Response from HelloWorld: %v", response.Result)
+	log.Printf("Response from HelloWorld: %v\n", response.GetResult())
 	log.Println("End of an unary RPC...")
 }

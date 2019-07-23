@@ -4,6 +4,8 @@ import (
 	"../proto"
 	"context"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"io"
 	"log"
 	"net"
@@ -13,39 +15,39 @@ import (
 
 type server struct{}
 
-func (*server) HelloWorld(ctx context.Context, req *proto.HelloWorldRequest) (*proto.HelloWorldResponse, error) {
-	log.Printf("HelloWorld function was invoked with request %v", req)
+func (*server) HelloWorld(ctx context.Context, request *proto.HelloWorldRequest) (*proto.HelloWorldResponse, error) {
+	log.Printf("HelloWorld function was invoked with request %v", request)
 
-	firstName := req.GetGreeting().GetFirstName()
-	lastName := req.GetGreeting().GetLastName()
+	firstName := request.GetGreeting().GetFirstName()
+	lastName := request.GetGreeting().GetLastName()
 
 	result := "Hello " + firstName + " " + lastName
-	res := &proto.HelloWorldResponse{
+	response := &proto.HelloWorldResponse{
 		Result: result,
 	}
 
-	log.Printf("HelloWorld function sends result %v", res)
+	log.Printf("HelloWorld function sends result %v", response)
 	log.Println("HelloWorld function is shut down...")
 
-	return res, nil
+	return response, nil
 }
 
-func (*server) HelloWorldRepeated(req *proto.HelloWorldRepeatedRequest, stream proto.HelloWorldService_HelloWorldRepeatedServer) error {
-	log.Printf("HelloWorldRepeated function was invoked with request %v", req)
+func (*server) HelloWorldRepeated(request *proto.HelloWorldRepeatedRequest, stream proto.HelloWorldService_HelloWorldRepeatedServer) error {
+	log.Printf("HelloWorldRepeated function was invoked with request %v", request)
 
-	firstName := req.Greeting.GetFirstName()
-	lastName := req.GetGreeting().GetLastName()
-	repeat := req.GetRepeat()
+	firstName := request.Greeting.GetFirstName()
+	lastName := request.GetGreeting().GetLastName()
+	repeat := request.GetRepeat()
 
 	for i := 0; i < int(repeat); i++ {
 		result := "Hello " + firstName + " " + lastName + " number " + strconv.Itoa(i)
-		res := &proto.HelloWorldRepeatedResponse{
+		response := &proto.HelloWorldRepeatedResponse{
 			Result: result,
 		}
 
-		log.Printf("HelloWorldRepeated function sends result %v", res)
+		log.Printf("HelloWorldRepeated function sends result %v", response)
 
-		e := stream.Send(res)
+		e := stream.Send(response)
 		if e != nil {
 			log.Fatalf("Error while sending data to client: %v", e)
 		}
@@ -63,25 +65,25 @@ func (*server) HelloWorldLong(stream proto.HelloWorldService_HelloWorldLongServe
 	result := ""
 
 	for {
-		req, e := stream.Recv()
-		log.Printf("HelloWorldLong received request %v", req)
+		request, e := stream.Recv()
+		log.Printf("HelloWorldLong received request %v", request)
 
 		if e == io.EOF {
-			res := &proto.HelloWorldLongResponse{
+			response := &proto.HelloWorldLongResponse{
 				Result: result,
 			}
 
-			log.Printf("HelloWorldLong function sends result %v", res)
+			log.Printf("HelloWorldLong function sends result %v", response)
 			log.Println("HelloWorldLong function is shut down...")
 
-			return stream.SendAndClose(res)
+			return stream.SendAndClose(response)
 		}
 		if e != nil {
 			log.Fatalf("Error while reading client stream: %v", e)
 		}
 
-		firstName := req.GetGreeting().GetFirstName()
-		lastName := req.GetGreeting().GetLastName()
+		firstName := request.GetGreeting().GetFirstName()
+		lastName := request.GetGreeting().GetLastName()
 		result += "Hello " + firstName + " " + lastName + "!\n"
 	}
 }
@@ -90,7 +92,7 @@ func (*server) HelloWorldEveryone(stream proto.HelloWorldService_HelloWorldEvery
 	log.Printf("HelloWorldEveryone function was invoked with stream %v", stream)
 
 	for {
-		req, e := stream.Recv()
+		request, e := stream.Recv()
 		if e == io.EOF {
 			log.Println("HelloWorldEveryone function is shut down...")
 			return nil
@@ -100,21 +102,47 @@ func (*server) HelloWorldEveryone(stream proto.HelloWorldService_HelloWorldEvery
 			return e
 		}
 
-		log.Printf("HelloWorldEveryone received request %v", req)
+		log.Printf("HelloWorldEveryone received request %v", request)
 
-		firstName := req.GetGreeting().GetFirstName()
-		lastName := req.GetGreeting().GetLastName()
-		res := "Hello " + firstName + " " + lastName + "!\n"
+		firstName := request.GetGreeting().GetFirstName()
+		lastName := request.GetGreeting().GetLastName()
+		response := "Hello " + firstName + " " + lastName + "!\n"
 
-		log.Printf("HelloWorldEveryone function sends result %v", res)
+		log.Printf("HelloWorldEveryone function sends result %v", response)
 		e = stream.Send(&proto.HelloWorldEveryoneResponse{
-			Result: res,
+			Result: response,
 		})
 		if e != nil {
 			log.Fatalf("Error while sending data to the client: %v", e)
 			return e
 		}
 	}
+}
+
+func (*server) HelloWorldWithDeadline(ctx context.Context, request *proto.HelloWorldWithDeadlineRequest) (*proto.HelloWorldWithDeadlineResponse, error) {
+	log.Printf("HelloWorldWithDeadline function was invoked with request %v", request)
+
+	for i := 0; i < 3; i++ {
+		if ctx.Err() == context.DeadlineExceeded {
+			log.Println("The client canceled the request!")
+			return nil, status.Error(codes.Canceled, "The client canceled the request!")
+		}
+
+		time.Sleep(1 * time.Second)
+	}
+
+	firstName := request.GetGreeting().GetFirstName()
+	lastName := request.GetGreeting().GetLastName()
+
+	result := "Hello " + firstName + " " + lastName
+	response := &proto.HelloWorldWithDeadlineResponse{
+		Result: result,
+	}
+
+	log.Printf("HelloWorldWithDeadline function sends result %v", response)
+	log.Println("HelloWorldWithDeadline function is shut down...")
+
+	return response, nil
 }
 
 func main() {

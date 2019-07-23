@@ -41,6 +41,14 @@ message HelloWorldEveryoneResponse {
     string result = 1;
 }
 
+message HelloWorldWithDeadlineRequest {
+    Greeting greeting = 1;
+}
+
+message HelloWorldWithDeadlineResponse {
+    string result = 1;
+}
+
 service HelloWorldService {
     // Unary Operation
     rpc HelloWorld (HelloWorldRequest) returns (HelloWorldResponse) {
@@ -56,5 +64,9 @@ service HelloWorldService {
 
     // Bidirectional Streaming
     rpc HelloWorldEveryone (stream HelloWorldEveryoneRequest) returns (stream HelloWorldEveryoneResponse) {
+    };
+
+    // Second Unary Operation to demonstrate Deadlines
+    rpc HelloWorldWithDeadline (HelloWorldWithDeadlineRequest) returns (HelloWorldWithDeadlineResponse) {
     };
 }
