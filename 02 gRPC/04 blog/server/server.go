@@ -56,6 +56,29 @@ func (s server) CreateBlog(ctx context.Context, request *proto.CreateBlogRequest
 	return response, nil
 }
 
+func (s server) ReadBlog(ctx context.Context, request *proto.ReadBlogRequest) (*proto.ReadBlogResponse, error) {
+	blogId := request.GetBlogId()
+	objectId := bson.ObjectIdHex(blogId)
+
+	result := blogItem{}
+	if e := s.session.DB("mydb").C("blog").FindId(objectId).One(&result); e != nil {
+		return nil, status.Errorf(
+			codes.Internal,
+			fmt.Sprintf("Internal Error! Failed to read item from MongoDb: %v", e))
+	}
+
+	response := &proto.ReadBlogResponse{
+		Blog: &proto.Blog{
+			Id:       result.ID.Hex(),
+			AuthorId: result.AuthorID,
+			Title:    result.Title,
+			Content:  result.Content,
+		},
+	}
+
+	return response, nil
+}
+
 type blogItem struct {
 	ID       bson.ObjectId `json:"id" bson:"_id"`
 	AuthorID string        `json:"author_id" bson:"author_id"`

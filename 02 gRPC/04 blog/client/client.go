@@ -3,6 +3,7 @@ package main
 import (
 	"../proto"
 	"context"
+	"fmt"
 	"google.golang.org/grpc"
 	"log"
 )
@@ -15,7 +16,7 @@ func main() {
 
 	client := CreateClient(cc)
 
-	request := proto.CreateBlogRequest{
+	createRequest := proto.CreateBlogRequest{
 		Blog: &proto.Blog{
 			AuthorId: "Rob",
 			Title:    "Hey Ho, Let's Go!",
@@ -23,12 +24,25 @@ func main() {
 		},
 	}
 
-	response, e := client.CreateBlog(context.Background(), &request)
+	createResponse, e := client.CreateBlog(context.Background(), &createRequest)
 	if e != nil {
 		log.Fatalf("Failed to call: %v", e)
 	}
 
-	log.Printf("Blog has been created: %v", response)
+	log.Printf("Blog has been created: %v", createResponse)
+
+	readRequest := proto.ReadBlogRequest{
+		BlogId: createResponse.GetBlog().GetId(),
+	}
+
+	readResponse, e := client.ReadBlog(context.Background(), &readRequest)
+	if e != nil {
+		log.Fatalf("Failed to call: %v", e)
+	}
+
+	blog := readResponse.GetBlog()
+	fmt.Printf("Blog Id: %s | Author: %s | Title: %s | Content: %s", blog.GetId(), blog.GetAuthorId(), blog.GetTitle(), blog.GetContent())
+
 	log.Println("Client for the Hello World Service Server is shut down!")
 }
 
