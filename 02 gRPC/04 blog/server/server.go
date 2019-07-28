@@ -125,6 +125,26 @@ func (s server) UpdateBlog(ctx context.Context, request *proto.UpdateBlogRequest
 	return response, nil
 }
 
+func (s server) DeleteBlog(ctx context.Context, request *proto.DeleteBlogRequest) (*proto.DeleteBlogResponse, error) {
+	blogId := bson.ObjectIdHex(request.GetBlogId())
+
+	selection := bson.M{
+		"_id": blogId,
+	}
+
+	if e := s.session.DB("mydb").C("blog").Remove(selection); e != nil {
+		return nil, status.Errorf(
+			codes.Internal,
+			fmt.Sprintf("Internal Error! Failed to remove from MongoDb: %v", e))
+	}
+
+	response := &proto.DeleteBlogResponse{
+		BlogId: blogId.Hex(),
+	}
+
+	return response, nil
+}
+
 func main() {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 	log.Println("The Blog Service Server is starting!")

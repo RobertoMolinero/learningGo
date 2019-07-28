@@ -60,6 +60,17 @@ func main() {
 	updated := updateResponse.GetBlog()
 	fmt.Printf("Blog Id: %s | Author: %s | Title: %s | Content: %s\n", updated.GetId(), updated.GetAuthorId(), updated.GetTitle(), updated.GetContent())
 
+	deleteRequest := proto.DeleteBlogRequest{
+		BlogId: blog.GetId(),
+	}
+
+	deleteResponse, e := client.DeleteBlog(context.Background(), &deleteRequest)
+	if e != nil {
+		log.Fatalf("Failed to call: %v", e)
+	}
+
+	fmt.Printf("Blog Id: %s\n", deleteResponse.GetBlogId())
+
 	log.Println("Client for the Hello World Service Server is shut down!")
 }
 
