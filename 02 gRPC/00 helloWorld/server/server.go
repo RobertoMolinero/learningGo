@@ -5,6 +5,7 @@ import (
 	"context"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/status"
 	"io"
 	"log"
@@ -153,7 +154,16 @@ func main() {
 		log.Fatalf("Failed to listen: %v", e)
 	}
 
-	s := grpc.NewServer()
+	certFile := "../../02 ssl/ssl/server.crt"
+	keyFile := "../../02 ssl/ssl/server.pem"
+
+	transportCredentials, e := credentials.NewServerTLSFromFile(certFile, keyFile)
+	if e != nil {
+		log.Fatalf("Failed loading certificates: %v", e)
+	}
+
+	serverOption := grpc.Creds(transportCredentials)
+	s := grpc.NewServer(serverOption)
 	proto.RegisterHelloWorldServiceServer(s, &server{})
 
 	if s.Serve(listener); e != nil {
