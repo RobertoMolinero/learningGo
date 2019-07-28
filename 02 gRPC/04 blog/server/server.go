@@ -20,6 +20,13 @@ type server struct {
 	session *mgo.Session
 }
 
+type blogItem struct {
+	ID       bson.ObjectId `json:"id" bson:"_id"`
+	AuthorID string        `json:"author_id" bson:"author_id"`
+	Content  string        `json:"content" bson:"content"`
+	Title    string        `json:"title" bson:"title"`
+}
+
 func (s server) CreateBlog(ctx context.Context, request *proto.CreateBlogRequest) (*proto.CreateBlogResponse, error) {
 	blog := request.GetBlog()
 
@@ -57,11 +64,10 @@ func (s server) CreateBlog(ctx context.Context, request *proto.CreateBlogRequest
 }
 
 func (s server) ReadBlog(ctx context.Context, request *proto.ReadBlogRequest) (*proto.ReadBlogResponse, error) {
-	blogId := request.GetBlogId()
-	objectId := bson.ObjectIdHex(blogId)
+	blogId := bson.ObjectIdHex(request.GetBlogId())
 
 	result := blogItem{}
-	if e := s.session.DB("mydb").C("blog").FindId(objectId).One(&result); e != nil {
+	if e := s.session.DB("mydb").C("blog").FindId(blogId).One(&result); e != nil {
 		return nil, status.Errorf(
 			codes.Internal,
 			fmt.Sprintf("Internal Error! Failed to read item from MongoDb: %v", e))
@@ -79,11 +85,44 @@ func (s server) ReadBlog(ctx context.Context, request *proto.ReadBlogRequest) (*
 	return response, nil
 }
 
-type blogItem struct {
-	ID       bson.ObjectId `json:"id" bson:"_id"`
-	AuthorID string        `json:"author_id" bson:"author_id"`
-	Content  string        `json:"content" bson:"content"`
-	Title    string        `json:"title" bson:"title"`
+func (s server) UpdateBlog(ctx context.Context, request *proto.UpdateBlogRequest) (*proto.UpdateBlogResponse, error) {
+	blog := request.GetBlog()
+	blogId := bson.ObjectIdHex(blog.GetId())
+
+	selection := bson.M{
+		"_id": blogId,
+	}
+	change := bson.M{
+		"$set": bson.M{
+			"author_id": blog.GetAuthorId(),
+			"title":     blog.GetTitle(),
+			"content":   blog.GetContent(),
+		},
+	}
+
+	if e := s.session.DB("mydb").C("blog").Update(selection, change); e != nil {
+		return nil, status.Errorf(
+			codes.Internal,
+			fmt.Sprintf("Internal Error! Failed to update of MongoDb: %v", e))
+	}
+
+	result := blogItem{}
+	if e := s.session.DB("mydb").C("blog").FindId(blogId).One(&result); e != nil {
+		return nil, status.Errorf(
+			codes.Internal,
+			fmt.Sprintf("Internal Error! Failed to read item from MongoDb: %v", e))
+	}
+
+	response := &proto.UpdateBlogResponse{
+		Blog: &proto.Blog{
+			Id:       result.ID.Hex(),
+			AuthorId: result.AuthorID,
+			Title:    result.Title,
+			Content:  result.Content,
+		},
+	}
+
+	return response, nil
 }
 
 func main() {

@@ -41,7 +41,24 @@ func main() {
 	}
 
 	blog := readResponse.GetBlog()
-	fmt.Printf("Blog Id: %s | Author: %s | Title: %s | Content: %s", blog.GetId(), blog.GetAuthorId(), blog.GetTitle(), blog.GetContent())
+	fmt.Printf("Blog Id: %s | Author: %s | Title: %s | Content: %s\n", blog.GetId(), blog.GetAuthorId(), blog.GetTitle(), blog.GetContent())
+
+	updateRequest := proto.UpdateBlogRequest{
+		Blog: &proto.Blog{
+			Id:       blog.GetId(),
+			AuthorId: "Rob (2)",
+			Title:    "Hey Ho, Let's Go! (2)",
+			Content:  "Lorem ipsum dolor sit... (2)",
+		},
+	}
+
+	updateResponse, e := client.UpdateBlog(context.Background(), &updateRequest)
+	if e != nil {
+		log.Fatalf("Failed to call: %v", e)
+	}
+
+	updated := updateResponse.GetBlog()
+	fmt.Printf("Blog Id: %s | Author: %s | Title: %s | Content: %s\n", updated.GetId(), updated.GetAuthorId(), updated.GetTitle(), updated.GetContent())
 
 	log.Println("Client for the Hello World Service Server is shut down!")
 }
