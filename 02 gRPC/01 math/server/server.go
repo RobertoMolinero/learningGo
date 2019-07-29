@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/reflection"
 	"google.golang.org/grpc/status"
 	"io"
 	"log"
@@ -163,6 +164,9 @@ func main() {
 
 	s := grpc.NewServer()
 	proto.RegisterMathServiceServer(s, &server{})
+
+	// Register reflection service on gRPC server
+	reflection.Register(s)
 
 	e = s.Serve(listener)
 	if e != nil {

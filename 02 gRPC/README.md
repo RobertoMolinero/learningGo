@@ -1,10 +1,10 @@
 # gRPC
 
-...
+gRPC (gRPC Remote Procedure Calls) is an open source remote procedure call (RPC) system initially developed at Google. It uses HTTP/2 for transport, Protocol Buffers as the interface description language, and provides features such as authentication, bidirectional streaming and flow control, blocking or nonblocking bindings, and cancellation and timeouts. It generates cross-platform client and server bindings for many languages. Most common usage scenarios include connecting services in microservices style architecture and connect mobile devices, browser clients to backend services.
+
+[Source Wikipedia](https://en.wikipedia.org/wiki/GRPC)
 
 ## The Examples
-
-There are two examples which demonstrate each form of communication once.
 
 ### Hello World
 
@@ -13,6 +13,28 @@ The first project is a modification of the famous Hello World. After one or more
 ### Math
 
 In the second project, a mathematical function is offered as an example for each call type.
+
+### Evans
+
+The tool is used to control an implemented service via a command line.
+
+Thus it is possible to test the server even if no client software is available yet.
+
+It is possible to display the provided packages and to navigate between them. The existing methods and their parameters can be read. The methods can be called with and their results can be displayed.
+
+To use the most common commands, there is a separate README.md in the subfolder.
+
+### SSL
+
+When communicating over a public network, interception of the sent data cannot be prevented. Therefore the encryption of this data is indispensable.
+
+The library provides general cryptographic functions for encryption and decryption. Certificates are generated to control who is authorized to access the data. 
+
+These certificates are then assigned to the program parts.
+
+### Blog
+
+In the last example the functions for a CRUD application are implemented. A MongoDb instance serves as data storage.
 
 ## Structure
 
@@ -60,7 +82,11 @@ service MathService {
 
 ## Generation
 
+...
+
+```
 protoc *.proto --go_out=plugins=grpc:.
+```
 
 ## Implemenation of the server
 

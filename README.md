@@ -16,10 +16,11 @@ Of course, I did not invent these applications here. My most recommended sources
 * Book:
 
     * [Head First Go](https://www.amazon.de/gp/product/1491969555/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1)
-    
 
 * Udemy:
 
     * [Web Development w/ Google’s Go (golang) Programming Language](https://www.udemy.com/go-programming-language/)
     * [Learn How To Code: Google's Go (golang) Programming Language](https://www.udemy.com/course/learn-how-to-code/)
+    * [gRPC \[Golang\] Master Class: Build Modern API & Microservices](https://www.udemy.com/grpc-golang/)
+    
     
