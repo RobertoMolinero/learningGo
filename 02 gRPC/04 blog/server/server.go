@@ -28,6 +28,8 @@ type blogItem struct {
 }
 
 func (s server) CreateBlog(ctx context.Context, request *proto.CreateBlogRequest) (*proto.CreateBlogResponse, error) {
+	log.Printf("CreateBlog function was invoked with request %v", request)
+
 	blog := request.GetBlog()
 
 	data := blogItem{
@@ -60,10 +62,15 @@ func (s server) CreateBlog(ctx context.Context, request *proto.CreateBlogRequest
 		},
 	}
 
+	log.Printf("CreateBlog function sends result %v", response)
+	log.Println("CreateBlog function is shut down...")
+
 	return response, nil
 }
 
 func (s server) ReadBlog(ctx context.Context, request *proto.ReadBlogRequest) (*proto.ReadBlogResponse, error) {
+	log.Printf("ReadBlog function was invoked with request %v", request)
+
 	blogId := bson.ObjectIdHex(request.GetBlogId())
 
 	result := blogItem{}
@@ -82,10 +89,15 @@ func (s server) ReadBlog(ctx context.Context, request *proto.ReadBlogRequest) (*
 		},
 	}
 
+	log.Printf("ReadBlog function sends result %v", response)
+	log.Println("ReadBlog function is shut down...")
+
 	return response, nil
 }
 
 func (s server) UpdateBlog(ctx context.Context, request *proto.UpdateBlogRequest) (*proto.UpdateBlogResponse, error) {
+	log.Printf("UpdateBlog function was invoked with request %v", request)
+
 	blog := request.GetBlog()
 	blogId := bson.ObjectIdHex(blog.GetId())
 
@@ -122,10 +134,15 @@ func (s server) UpdateBlog(ctx context.Context, request *proto.UpdateBlogRequest
 		},
 	}
 
+	log.Printf("UpdateBlog function sends result %v", response)
+	log.Println("UpdateBlog function is shut down...")
+
 	return response, nil
 }
 
 func (s server) DeleteBlog(ctx context.Context, request *proto.DeleteBlogRequest) (*proto.DeleteBlogResponse, error) {
+	log.Printf("DeleteBlog function was invoked with request %v", request)
+
 	blogId := bson.ObjectIdHex(request.GetBlogId())
 
 	selection := bson.M{
@@ -142,7 +159,42 @@ func (s server) DeleteBlog(ctx context.Context, request *proto.DeleteBlogRequest
 		BlogId: blogId.Hex(),
 	}
 
+	log.Printf("DeleteBlog function sends result %v", response)
+	log.Println("DeleteBlog function is shut down...")
+
 	return response, nil
+}
+
+func (s server) ListBlog(request *proto.ListBlogRequest, stream proto.BlogService_ListBlogServer) error {
+	log.Printf("ListBlog function was invoked with request %v", request)
+
+	cursor := s.session.DB("mydb").C("blog").Find(nil).Iter()
+	defer cursor.Close()
+
+	result := blogItem{}
+
+	for cursor.Next(&result) {
+		response := &proto.ListBlogResponse{
+			Blog: &proto.Blog{
+				Id:       result.ID.Hex(),
+				AuthorId: result.AuthorID,
+				Title:    result.Title,
+				Content:  result.Content,
+			},
+		}
+
+		log.Printf("ListBlog function streams result %v", response)
+
+		if e := stream.Send(response); e != nil {
+			return status.Errorf(
+				codes.Internal,
+				fmt.Sprintf("Internal Error! Failed to stream data from MongoDb: %v", e))
+		}
+	}
+
+	log.Println("ListBlog function is shut down...")
+
+	return nil
 }
 
 func main() {
@@ -154,6 +206,7 @@ func main() {
 	if e != nil {
 		log.Fatalf("Failed to dial to MongoDb: %v", e)
 	}
+	log.Println("Connecting established to MongoDb")
 
 	listener, e := net.Listen("tcp", "0.0.0.0:50051")
 	if e != nil {
