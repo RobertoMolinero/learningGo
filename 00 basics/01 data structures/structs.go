@@ -13,8 +13,7 @@ type person struct {
 	contactInfo
 }
 
-func main() {
-
+func CreateAndUpdateStruct() {
 	lisa := person{
 		firstName: "Lisa",
 		lastName:  "Simpson",
@@ -39,15 +38,23 @@ func main() {
 		},
 	}
 
+	fmt.Println("Original:")
 	homer.print()
 
+	fmt.Println("Update mit Value:")
 	homer.updateFirstName("Homerino")
 	homer.print()
 
-	fmt.Println(&homer)
+	fmt.Println("Update mit Pointer:")
+	homer.updateFirstName("Homerino")
+	homer.print()
 }
 
-func (p *person) updateFirstName(newFirstName string) {
+func (p person) updateFirstName(newFirstName string) {
+	p.firstName = newFirstName
+}
+
+func (p *person) updateFirstNamePointer(newFirstName string) {
 	(*p).firstName = newFirstName
 }
 

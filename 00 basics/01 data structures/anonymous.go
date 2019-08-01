@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func CreateAnomymous() {
 	x := struct {
 		s  string
 		xi []string
@@ -23,4 +23,14 @@ func main() {
 	}
 
 	fmt.Println(x)
+
+	anonymous := struct {
+		first string
+		last  string
+	}{
+		first: "A",
+		last:  "X",
+	}
+
+	fmt.Println(anonymous)
 }

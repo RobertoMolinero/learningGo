@@ -17,7 +17,7 @@ type sedan struct {
 	luxury bool
 }
 
-func main() {
+func CreateVehicle() {
 	t := truck{
 		vehicle: vehicle{
 			doors: 4,

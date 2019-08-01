@@ -9,11 +9,11 @@ type embeddedPerson struct {
 }
 
 type clown struct {
-	embeddedPerson // Embedded Struct
+	embeddedPerson
 	clownShoes bool
 }
 
-func main() {
+func CreatePerson() {
 	p1 := embeddedPerson{
 		first: "Bart",
 		last:  "Simpson",
@@ -34,16 +34,6 @@ func main() {
 		},
 		clownShoes: true,
 	}
-
-	anonymous := struct {
-		first string
-		last  string
-	}{
-		first: "A",
-		last:  "X",
-	}
-
-	fmt.Println(anonymous)
 
 	fmt.Println(p1)
 	fmt.Println(p2)
