@@ -1,4 +1,4 @@
-package mystr
+package main
 
 import (
 	"fmt"
@@ -40,7 +40,14 @@ func ExampleJoin() {
 	// Shaken not stirred
 }
 
-const s = "We ask ourselves, Who am I to be brilliant, gorgeous, talented, fabulous? Actually, who are you not to be? Your playing small does not serve the world. There is nothing enlightened about shrinking so that other people won't feel insecure around you. We are all meant to shine, as children do. We were born to make manifest the glory that is within us. It's not just in some of us; it's in everyone. And as we let our own light shine, we unconsciously give other people permission to do the same. As we are liberated from our own fear, our presence automatically liberates others. - Marianne Williamson"
+const s = "I went to the woods because I wished to live deliberately, to front only the essential facts of life, and " +
+	"see if I could not learn what it had to teach, and not, when I came to die, discover that I had not lived. I did " +
+	"not wish to live what was not life, living is so dear; nor did I wish to practise resignation, unless it was " +
+	"quite necessary. I wanted to live deep and suck out all the marrow of life, to live so sturdily and Spartan-like " +
+	"as to put to rout all that was not life, to cut a broad swath and shave close, to drive life into a corner, and " +
+	"reduce it to its lowest terms, and, if it proved to be mean, why then to get the whole and genuine meanness of " +
+	"it, and publish its meanness to the world; or if it were sublime, to know it by experience, and be able to give " +
+	"a true account of it in my next excursion."
 
 var xs []string
 

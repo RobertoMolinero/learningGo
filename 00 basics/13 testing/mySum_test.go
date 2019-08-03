@@ -5,7 +5,6 @@ import (
 )
 
 func Test_mySum(t *testing.T) {
-
 	type test struct {
 		name   string
 		data   []int

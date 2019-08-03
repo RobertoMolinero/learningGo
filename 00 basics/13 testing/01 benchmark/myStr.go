@@ -1,4 +1,4 @@
-package mystr
+package main
 
 import "strings"
 
