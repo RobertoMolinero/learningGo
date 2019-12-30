@@ -1,8 +1,10 @@
 # System Programming
 
-In diesem Teil des Ordners soll es um die systemnahe Programmierung gehen.
+This part of the folder is intended to deal with system-oriented programming.
 
-Das System ist Linux.
+The system is Linux.
 
-Die wichtigsten Bestandteile des Systems sollen angesprochen und gesteuert werden. Dabei soll jeder Bestandteil einzeln untersucht und in den Gesamtkontext des Systems eingeordnet werden.
+The most important parts of the system shall be addressed and controlled.
+
+Each component is to be examined individually and placed in the overall context of the system.
         
