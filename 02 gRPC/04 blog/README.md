@@ -11,7 +11,7 @@ https://www.mongodb.com/download-center/community
 Start the service by specifying a folder to store the data:
 
 ```
-mongod --dbpath /home/roberto/Development/Mongo/
+mongod --dbpath $HOME/Development/Mongo/
 ```
 
 ## 

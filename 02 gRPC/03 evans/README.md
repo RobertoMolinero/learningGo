@@ -9,7 +9,7 @@ https://github.com/ktr0731/evans
 ## Start
 
 ```
-roberto@denkBrett:~$ evans -p 50051 -r
+$ evans -p 50051 -r
   ______
  |  ____|
  | |__    __   __   __ _   _ __    ___

@@ -31,7 +31,7 @@ export PATH=$PATH:/usr/local/go/bin
 Test the installation and check the currently installed version.
 
 ```
-roberto@denkBrett:~$ go version
+$ go version
 go version go1.13.5 linux/amd64
 ```
 
