@@ -11,8 +11,8 @@ func main() {
 	defer removeFile(file.Name())
 }
 
-func createFile(filename string) *os.File {
-	file, err := os.Create(filename)
+func createFile(fileName string) *os.File {
+	file, err := os.Create(fileName)
 	if err != nil {
 		fmt.Println(err)
 		return nil
@@ -20,8 +20,8 @@ func createFile(filename string) *os.File {
 	return file
 }
 
-func removeFile(filename string) {
-	if err := os.Remove(filename); err != nil {
+func removeFile(fileName string) {
+	if err := os.Remove(fileName); err != nil {
 		fmt.Println(err)
 	}
 }
