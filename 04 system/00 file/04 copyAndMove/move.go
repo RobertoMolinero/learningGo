@@ -7,13 +7,20 @@ import (
 
 func main() {
 	directoryName := "abc"
+	directoryNameParent := "def"
 	fileName := "test.txt"
 
+	// Create a first folder
 	os.Mkdir(directoryName, 0777)
-	defer removeDirectory(directoryName)
 
+	// Create a file and move it to the first folder
 	file := createFile(fileName)
 	moveFile(file.Name(), directoryName)
+
+	// Create a second folder and move the first one to the second
+	os.Mkdir(directoryNameParent, 0777)
+	moveFile(directoryName, directoryNameParent)
+	defer removeDirectory(directoryNameParent)
 }
 
 func createFile(fileName string) *os.File {
