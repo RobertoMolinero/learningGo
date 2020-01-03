@@ -93,3 +93,12 @@ For this simple test case:
 $ cp -r myMath/ $GOPATH/src
 $ godoc -http=:6060
 ```
+
+
+### Compiled version in the repository
+
+To create a compiled version in the repository the code can be compiled and copied with 'go install'.  
+
+```
+$ go install myMath
+```
