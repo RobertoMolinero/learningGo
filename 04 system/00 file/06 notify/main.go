@@ -16,25 +16,17 @@ func main() {
 	}
 
 	_, done := monitoring(subfolder)
-	<- done
+	<-done
 }
 
-func monitoring (subfolder string) (error, chan bool) {
+func monitoring(subfolder string) (error, chan bool) {
 	watcher, err := fsnotify.NewWatcher()
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer watcher.Close()
 
 	done := make(chan bool)
-	c := make(chan os.Signal, 2)
-	signal.Notify(c, os.Interrupt, syscall.SIGTERM)
-
-	go func() {
-		<-c
-		os.RemoveAll(subfolder)
-		os.Exit(1)
-	}()
+	cleanup(watcher, subfolder)
 
 	go func() {
 		for {
@@ -53,15 +45,30 @@ func monitoring (subfolder string) (error, chan bool) {
 		}
 	}()
 
-	wd, err := os.Getwd()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	if err := watcher.Add(wd + "/" + subfolder); err != nil {
+	if err := watcher.Add(getWd(err) + "/" + subfolder); err != nil {
 		log.Fatal(err)
 	}
 
 	done <- true
 	return nil, done
+}
+
+func getWd(err error) string {
+	wd, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+	return wd
+}
+
+func cleanup(watcher *fsnotify.Watcher, subfolder string) {
+	c := make(chan os.Signal, 2)
+	signal.Notify(c, os.Interrupt, syscall.SIGTERM)
+
+	go func() {
+		<-c
+		watcher.Close()
+		os.RemoveAll(subfolder)
+		os.Exit(1)
+	}()
 }
